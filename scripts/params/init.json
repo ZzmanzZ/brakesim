@@ -1,0 +1,19 @@
+{
+  "t_end": 5.0,
+  "t_eval_points": 800,
+  "T_brake": {
+    "FL": 1000.0,
+    "FR": 1000.0,
+    "RL": 1000.0,
+    "RR": 1000.0
+  },
+  "y0": {
+    "v": 20.0,
+    "theta": 0.0,
+    "theta_dot": 0.0,
+    "omega_fl": 80.0,
+    "omega_fr": 80.0,
+    "omega_rl": 80.0,
+    "omega_rr": 80.0
+  }
+}

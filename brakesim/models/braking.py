@@ -8,7 +8,7 @@ import numpy as np
 from brakesim.models.loads import normal_loads_from_pitch
 from brakesim.models.pitch import PitchParams, pitch_rhs
 from brakesim.models.tire import slip_ratio, tire_fx
-from brakesim.models.wheel import wheel_rhs
+from brakesim.models.wheel import wheel_rhs_locking
 
 
 @dataclass(frozen=True)
@@ -83,7 +83,7 @@ def braking_rhs(
     brake = _wheel_values(T_brake)
     domega = {}
     for key, omega in omegas.items():
-        domega[key] = wheel_rhs(
+        domega[key] = wheel_rhs_locking(
             omega,
             brake[key],
             Fx[key],
@@ -103,3 +103,13 @@ def braking_rhs(
         ],
         dtype=float,
     )
+
+
+def zero_speed_event(t: float, y: np.ndarray) -> float:
+    """Event function to stop integration when vehicle speed reaches zero."""
+    _ = t
+    return y[0]
+
+
+zero_speed_event.terminal = True
+zero_speed_event.direction = -1
