@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.integrate import solve_ivp
 
-from brakesim.models import BrakingParams, PitchParams, braking_rhs
+from brakesim.models import BrakingParams, EnvironmentParams, PitchParams, braking_rhs
 
 
 def test_full_braking_rhs_slows_vehicle():
@@ -22,14 +22,26 @@ def test_full_braking_rhs_slows_vehicle():
         k_wr=30000.0,
         Re=0.25,
         Iw=1.2,
-        mu=1.2,
         C_kappa=25.0,
+        Cl=1.6,
+        Cd=1.2,
+        A_ref=1.1,
+        aero_balance=0.5,
+        pedal_ratio=5.0,
+        mc_area_f=2.0e-4,
+        mc_area_r=2.0e-4,
+        caliper_piston_area=3.0e-4,
+        caliper_piston_count=4,
+        pad_mu_static=0.45,
+        pad_mu_kinetic=0.38,
+        r_brake=0.12,
+        balance_bar=0.6,
     )
-
-    T_brake = {"FL": 200.0, "FR": 200.0, "RL": 200.0, "RR": 200.0}
+    env = EnvironmentParams(mu=1.2, rho=1.225)
+    pedal_force = 500.0
 
     def rhs(t, y):
-        return braking_rhs(t, y, params, T_brake)
+        return braking_rhs(t, y, params, env, pedal_force)
 
     v0 = 20.0
     y0 = np.array([v0, 0.0, 0.0, 80.0, 80.0, 80.0, 80.0], dtype=float)

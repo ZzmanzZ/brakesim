@@ -1,0 +1,50 @@
+# Vehicle parameters (units in comments)
+m: 275.2             # kg
+g: 9.81              # m/s^2
+a: 0.783             # m (CG to front axle)
+b: 0.752             # m (CG to rear axle)
+h_cg: 0.270993       # m
+Iyy: 25.658617597   # kg*m^2
+k_theta: 25000.0     # N*m/rad
+c_theta: 650.0       # N*m*s/rad
+k_wf: 30000.0        # N/m per front wheel (suspension, no tire)
+k_wr: 30000.0        # N/m per rear wheel (suspension, no tire)
+Re: 0.25             # m (effective rolling radius)
+Iw: 1.2              # kg*m^2 per wheel
+C_kappa: 25.0        # 1/slip
+Cl: 3.13             # total downforce coefficient
+Cd: 1.3              # drag coefficient
+A_ref: 1.11          # m^2 (reference area)
+aero_balance: 0.4033 # fraction of downforce on front axle
+mc_area_f: 0.00079173043    # m^2 (front master cylinder area)
+mc_area_r: 0.00099314665    # m^2 (rear master cylinder area)
+caliper_piston_area:  # m^2 per piston
+  FL: 0.0019634954
+  FR: 0.0019634954
+  RL: 0.0019634954
+  RR: 0.0019634954
+caliper_piston_count: # pistons per caliper
+  FL: 4
+  FR: 4
+  RL: 2
+  RR: 2
+pedal_ratio: 4.4       # pedal leverage ratio
+pad_mu_static:         # pad friction coefficient (static)
+  FL: 0.75
+  FR: 0.75
+  RL: 0.75
+  RR: 0.75
+pad_mu_kinetic:        # pad friction coefficient (kinetic)
+  FL: 0.65
+  FR: 0.65
+  RL: 0.65
+  RR: 0.65
+r_brake:               # m effective brake radius
+  FL: 0.12
+  FR: 0.12
+  RL: 0.12
+  RR: 0.12
+balance_bar: 0.73      # fraction of pedal force to front circuit
+tir_file: scripts/params/18-6.5-hoosier.tir
+k_tf: null           # N/m tire stiffness per front wheel (optional)
+k_tr: null           # N/m tire stiffness per rear wheel (optional)

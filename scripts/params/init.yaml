@@ -1,0 +1,21 @@
+# Simulation configuration
+t_end: 10.0              # s
+t_eval_points: 2400      # number of output points
+rho: 1.162              # kg/m^3 (air density)
+mu: 1.1                 # peak friction
+pedal_force: 0.0      # N (driver pedal input, used if no profile)
+pedal_profile:          # piecewise linear profile (t in s, force in N)
+  - t: 0.0
+    force: 0.0
+  - t: 2.0
+    force: 0.0
+  - t: 5.0
+    force: 300.0
+y0:                     # initial state
+  v: 20.0               # m/s
+  theta: 0.0            # rad
+  theta_dot: 0.0        # rad/s
+  omega_fl: 80.0        # rad/s
+  omega_fr: 80.0        # rad/s
+  omega_rl: 80.0        # rad/s
+  omega_rr: 80.0        # rad/s
